@@ -2,6 +2,37 @@ import 'package:flutter/material.dart';
 
 import '../../image_painter.dart';
 
+class FlatButtonWithIcon extends TextButton {
+  FlatButtonWithIcon({
+    Key? key,
+    required VoidCallback onPressed,
+    Clip clipBehavior = Clip.none,
+    FocusNode? focusNode,
+    Color? textColor,
+    required Widget icon,
+    required Widget label,
+  }) : super(
+          key: key,
+          onPressed: onPressed,
+          clipBehavior: clipBehavior,
+          focusNode: focusNode,
+          style: textColor != null
+              ? ButtonStyle(
+                  textStyle: MaterialStateProperty.all<TextStyle>(
+                  TextStyle(color: textColor),
+                ))
+              : null,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              icon,
+              // const SizedBox(height: 5.0),
+              // label,
+            ],
+          ),
+        );
+}
+
 class SelectionItems extends StatelessWidget {
   final bool isSelected;
   final ModeData data;
@@ -20,34 +51,72 @@ class SelectionItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4.0),
-          color: isSelected ? Colors.blue : Colors.transparent),
-      child: ListTile(
-        leading: IconTheme(
-          data: const IconThemeData(opacity: 1.0),
-          child: Icon(
-            data.icon,
-            color: isSelected
-                ? selectedColor ?? Colors.white
-                : unselectedColor ?? Colors.black,
-          ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: Icon(
+          data.icon,
+          size: 26,
+          color: isSelected
+              ? selectedColor ?? Theme.of(context).colorScheme.primary
+              : unselectedColor ?? const Color(0xFF666666),
         ),
-        title: Text(
-          data.label,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: isSelected
-                    ? Colors.white
-                    : Theme.of(context).textTheme.bodyLarge?.color,
-              ),
-        ),
-        onTap: onTap,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-        selected: isSelected,
       ),
     );
+    // return FlatButtonWithIcon(
+    //   onPressed: () {
+    //     if (null != onTap) {
+    //       onTap!();
+    //     }
+    //   },
+    //   icon: Icon(
+    //     data.icon,
+    //     color: isSelected
+    //         ? selectedColor ?? Theme.of(context).colorScheme.primary
+    //         : unselectedColor ?? const Color(0xFF666666),
+    //   ),
+    //   label: Text(
+    //     data.label,
+    //     style: isSelected
+    //         ? Theme.of(context).textTheme.titleMedium?.copyWith(
+    //               color: Theme.of(context).colorScheme.primary,
+    //             )
+    //         : Theme.of(context).textTheme.titleMedium?.copyWith(
+    //               color: const Color(0xFF666666),
+    //               fontWeight: FontWeight.normal,
+    //             ),
+    //   ),
+    // );
+    // return Container(
+    //   margin: const EdgeInsets.symmetric(vertical: 2.0),
+    //   decoration: BoxDecoration(
+    //     borderRadius: BorderRadius.circular(4.0),
+    //     color: isSelected ? Colors.blue : Colors.transparent,
+    //   ),
+    //   child: ListTile(
+    //     leading: IconTheme(
+    //       data: const IconThemeData(opacity: 1.0),
+    //       child: Icon(
+    //         data.icon,
+    //         color: isSelected
+    //             ? selectedColor ?? Colors.white
+    //             : unselectedColor ?? Colors.black,
+    //       ),
+    //     ),
+    //     title: Text(
+    //       data.label,
+    //       style: Theme.of(context).textTheme.titleMedium?.copyWith(
+    //             color: isSelected
+    //                 ? Colors.white
+    //                 : Theme.of(context).textTheme.bodyLarge?.color,
+    //           ),
+    //     ),
+    //     onTap: onTap,
+    //     contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+    //     selected: isSelected,
+    //   ),
+    // );
   }
 }
 
@@ -93,6 +162,7 @@ class ModeData {
     required this.mode,
     required this.label,
   });
+
   final IconData icon;
   final PaintMode mode;
   final String label;

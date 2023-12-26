@@ -34,6 +34,7 @@ class ImagePainter extends StatefulWidget {
     this.clearAllIcon,
     this.colorIcon,
     this.undoIcon,
+    this.saveIcon,
     this.isSignature = false,
     this.controlsAtTop = true,
     this.signatureBackgroundColor = Colors.white,
@@ -51,6 +52,7 @@ class ImagePainter extends StatefulWidget {
     this.optionUnselectedColor,
     this.optionColor,
     this.onUndo,
+    this.onSave,
     this.onClear,
   }) : super(key: key);
 
@@ -65,6 +67,7 @@ class ImagePainter extends StatefulWidget {
     List<Color>? colors,
     Widget? brushIcon,
     Widget? undoIcon,
+    Widget? saveIcon,
     Widget? clearAllIcon,
     Widget? colorIcon,
     PaintMode? initialPaintMode,
@@ -81,6 +84,7 @@ class ImagePainter extends StatefulWidget {
     Color? unselectedColor,
     Color? optionColor,
     VoidCallback? onUndo,
+    VoidCallback? onSave,
     VoidCallback? onClear,
   }) {
     return ImagePainter._(
@@ -93,6 +97,7 @@ class ImagePainter extends StatefulWidget {
       colors: colors,
       brushIcon: brushIcon,
       undoIcon: undoIcon,
+      saveIcon: saveIcon,
       colorIcon: colorIcon,
       clearAllIcon: clearAllIcon,
       initialPaintMode: initialPaintMode,
@@ -109,6 +114,7 @@ class ImagePainter extends StatefulWidget {
       optionUnselectedColor: unselectedColor,
       optionColor: optionColor,
       onUndo: onUndo,
+      onSave: onSave,
       onClear: onClear,
     );
   }
@@ -124,6 +130,7 @@ class ImagePainter extends StatefulWidget {
     List<Color>? colors,
     Widget? brushIcon,
     Widget? undoIcon,
+    Widget? saveIcon,
     Widget? clearAllIcon,
     Widget? colorIcon,
     PaintMode? initialPaintMode,
@@ -140,6 +147,7 @@ class ImagePainter extends StatefulWidget {
     Color? unselectedColor,
     Color? optionColor,
     VoidCallback? onUndo,
+    VoidCallback? onSave,
     VoidCallback? onClear,
   }) {
     return ImagePainter._(
@@ -152,6 +160,7 @@ class ImagePainter extends StatefulWidget {
       colors: colors,
       brushIcon: brushIcon,
       undoIcon: undoIcon,
+      saveIcon: saveIcon,
       colorIcon: colorIcon,
       clearAllIcon: clearAllIcon,
       initialPaintMode: initialPaintMode,
@@ -168,6 +177,7 @@ class ImagePainter extends StatefulWidget {
       optionUnselectedColor: unselectedColor,
       optionColor: optionColor,
       onUndo: onUndo,
+      onSave: onSave,
       onClear: onClear,
     );
   }
@@ -183,6 +193,7 @@ class ImagePainter extends StatefulWidget {
     List<Color>? colors,
     Widget? brushIcon,
     Widget? undoIcon,
+    Widget? saveIcon,
     Widget? clearAllIcon,
     Widget? colorIcon,
     PaintMode? initialPaintMode,
@@ -199,6 +210,7 @@ class ImagePainter extends StatefulWidget {
     Color? unselectedColor,
     Color? optionColor,
     VoidCallback? onUndo,
+    VoidCallback? onSave,
     VoidCallback? onClear,
   }) {
     return ImagePainter._(
@@ -211,6 +223,7 @@ class ImagePainter extends StatefulWidget {
       isScalable: scalable ?? false,
       brushIcon: brushIcon,
       undoIcon: undoIcon,
+      saveIcon: saveIcon,
       colorIcon: colorIcon,
       clearAllIcon: clearAllIcon,
       initialPaintMode: initialPaintMode,
@@ -227,6 +240,7 @@ class ImagePainter extends StatefulWidget {
       optionUnselectedColor: unselectedColor,
       optionColor: optionColor,
       onUndo: onUndo,
+      onSave: onSave,
       onClear: onClear,
     );
   }
@@ -244,6 +258,7 @@ class ImagePainter extends StatefulWidget {
     Widget? undoIcon,
     Widget? clearAllIcon,
     Widget? colorIcon,
+    Widget? saveIcon,
     PaintMode? initialPaintMode,
     double? initialStrokeWidth,
     Color? initialColor,
@@ -258,6 +273,7 @@ class ImagePainter extends StatefulWidget {
     Color? unselectedColor,
     Color? optionColor,
     VoidCallback? onUndo,
+    VoidCallback? onSave,
     VoidCallback? onClear,
   }) {
     return ImagePainter._(
@@ -270,6 +286,7 @@ class ImagePainter extends StatefulWidget {
       colors: colors,
       brushIcon: brushIcon,
       undoIcon: undoIcon,
+      saveIcon: saveIcon,
       colorIcon: colorIcon,
       clearAllIcon: clearAllIcon,
       initialPaintMode: initialPaintMode,
@@ -286,6 +303,7 @@ class ImagePainter extends StatefulWidget {
       optionUnselectedColor: unselectedColor,
       optionColor: optionColor,
       onUndo: onUndo,
+      onSave: onSave,
       onClear: onClear,
     );
   }
@@ -299,6 +317,7 @@ class ImagePainter extends StatefulWidget {
     List<Color>? colors,
     Widget? brushIcon,
     Widget? undoIcon,
+    Widget? saveIcon,
     Widget? clearAllIcon,
     Widget? colorIcon,
     ValueChanged<PaintMode>? onPaintModeChanged,
@@ -312,6 +331,7 @@ class ImagePainter extends StatefulWidget {
     Color? unselectedColor,
     Color? optionColor,
     VoidCallback? onUndo,
+    VoidCallback? onSave,
     VoidCallback? onClear,
   }) {
     return ImagePainter._(
@@ -324,6 +344,7 @@ class ImagePainter extends StatefulWidget {
       signatureBackgroundColor: signatureBgColor ?? Colors.white,
       brushIcon: brushIcon,
       undoIcon: undoIcon,
+      saveIcon: saveIcon,
       colorIcon: colorIcon,
       clearAllIcon: clearAllIcon,
       onPaintModeChanged: onPaintModeChanged,
@@ -337,6 +358,7 @@ class ImagePainter extends StatefulWidget {
       optionUnselectedColor: unselectedColor,
       optionColor: optionColor,
       onUndo: onUndo,
+      onSave: onSave,
       onClear: onClear,
     );
   }
@@ -384,6 +406,8 @@ class ImagePainter extends StatefulWidget {
   ///Widget for Undo last action on control bar.
   final Widget? undoIcon;
 
+  final Widget? saveIcon;
+
   ///Widget for clearing all actions on control bar.
   final Widget? clearAllIcon;
 
@@ -422,6 +446,8 @@ class ImagePainter extends StatefulWidget {
 
   final VoidCallback? onUndo;
 
+  final VoidCallback? onSave;
+
   final VoidCallback? onClear;
 
   @override
@@ -439,6 +465,7 @@ class ImagePainterState extends State<ImagePainter> {
 
   int _strokeMultiplier = 1;
   late TextDelegate textDelegate;
+
   @override
   void initState() {
     super.initState();
@@ -603,6 +630,61 @@ class ImagePainterState extends State<ImagePainter> {
             ),
           ),
           if (!widget.controlsAtTop && widget.showControls) _buildControls(),
+          SizedBox(
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: paintModes(textDelegate)
+                  .map(
+                    (item) => SelectionItems(
+                      data: item,
+                      isSelected: _controller.mode == item.mode,
+                      selectedColor: widget.optionSelectedColor,
+                      unselectedColor: widget.optionUnselectedColor,
+                      onTap: () {
+                        if (widget.onPaintModeChanged != null) {
+                          widget.onPaintModeChanged!(item.mode);
+                        }
+                        _controller.setMode(item.mode);
+
+                        setState(() {});
+
+                        if (item.mode == PaintMode.text) {
+                          _openTextDialog(context);
+                        }
+                      },
+                    ),
+                  )
+                  .toList(),
+            ),
+/*            child: ListView.builder(
+              padding: EdgeInsets.zero,
+              scrollDirection: Axis.horizontal,
+              itemCount: paintModes(textDelegate).length,
+              itemBuilder: (context, index) {
+                final item = paintModes(textDelegate)[index];
+                return SelectionItems(
+                  data: item,
+                  isSelected: _controller.mode == item.mode,
+                  selectedColor: widget.optionSelectedColor,
+                  unselectedColor: widget.optionUnselectedColor,
+                  onTap: () {
+                    if (widget.onPaintModeChanged != null) {
+                      widget.onPaintModeChanged!(item.mode);
+                    }
+                    _controller.setMode(item.mode);
+
+                    setState(() {});
+
+                    if (item.mode == PaintMode.text) {
+                      _openTextDialog(context);
+                    }
+                  },
+                );
+              },
+            ),*/
+          ),
           SizedBox(height: MediaQuery.of(context).padding.bottom)
         ],
       ),
@@ -652,6 +734,11 @@ class ImagePainterState extends State<ImagePainter> {
                 IconButton(
                   tooltip: textDelegate.undo,
                   icon: widget.undoIcon ??
+                      Icon(Icons.reply, color: Colors.grey[700]),
+                  onPressed: () => _controller.undo(),
+                ),
+                IconButton(
+                  icon: widget.saveIcon ??
                       Icon(Icons.reply, color: Colors.grey[700]),
                   onPressed: () => _controller.undo(),
                 ),
@@ -765,7 +852,7 @@ class ImagePainterState extends State<ImagePainter> {
 
                       Navigator.of(context).pop();
                       if (item.mode == PaintMode.text) {
-                        _openTextDialog();
+                        _openTextDialog(context);
                       }
                     },
                   ),
@@ -850,7 +937,7 @@ class ImagePainterState extends State<ImagePainter> {
     }
   }
 
-  void _openTextDialog() {
+  void _openTextDialog(BuildContext context) {
     _controller.setMode(PaintMode.text);
     final fontSize = 6 * _controller.strokeWidth;
     TextDialog.show(
@@ -872,7 +959,6 @@ class ImagePainterState extends State<ImagePainter> {
           );
           _textController.clear();
         }
-        Navigator.of(context).pop();
       },
     );
   }
@@ -883,22 +969,22 @@ class ImagePainterState extends State<ImagePainter> {
       color: widget.controlsBackgroundColor ?? Colors.grey[200],
       child: Row(
         children: [
-          AnimatedBuilder(
-            animation: _controller,
-            builder: (_, __) {
-              final icon = paintModes(textDelegate)
-                  .firstWhere((item) => item.mode == _controller.mode)
-                  .icon;
-              return PopupMenuButton(
-                tooltip: textDelegate.changeMode,
-                shape: ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-                icon: Icon(icon, color: widget.optionColor ?? Colors.grey[700]),
-                itemBuilder: (_) => [_showOptionsRow()],
-              );
-            },
-          ),
+          // AnimatedBuilder(
+          //   animation: _controller,
+          //   builder: (_, __) {
+          //     final icon = paintModes(textDelegate)
+          //         .firstWhere((item) => item.mode == _controller.mode)
+          //         .icon;
+          //     return PopupMenuButton(
+          //       tooltip: textDelegate.changeMode,
+          //       shape: ContinuousRectangleBorder(
+          //         borderRadius: BorderRadius.circular(40),
+          //       ),
+          //       icon: Icon(icon, color: widget.optionColor ?? Colors.grey[700]),
+          //       itemBuilder: (_) => [_showOptionsRow()],
+          //     );
+          //   },
+          // ),
           AnimatedBuilder(
             animation: _controller,
             builder: (_, __) {
@@ -960,6 +1046,13 @@ class ImagePainterState extends State<ImagePainter> {
             onPressed: () {
               widget.onUndo?.call();
               _controller.undo();
+            },
+          ),
+          IconButton(
+            icon: widget.saveIcon ??
+                Icon(Icons.save_alt, color: Colors.grey[700]),
+            onPressed: () {
+              widget.onSave?.call();
             },
           ),
           IconButton(
