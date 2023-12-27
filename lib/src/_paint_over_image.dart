@@ -1048,13 +1048,13 @@ class ImagePainterState extends State<ImagePainter> {
               _controller.undo();
             },
           ),
-          IconButton(
-            icon: widget.saveIcon ??
-                Icon(Icons.save_alt, color: Colors.grey[700]),
-            onPressed: () {
-              widget.onSave?.call();
-            },
-          ),
+          // IconButton(
+          //   icon: widget.saveIcon ??
+          //       Icon(Icons.save_alt, color: Colors.grey[700]),
+          //   onPressed: () {
+          //     widget.onSave?.call();
+          //   },
+          // ),
           IconButton(
             tooltip: textDelegate.clearAllProgress,
             icon: widget.clearAllIcon ??
