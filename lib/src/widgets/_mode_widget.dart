@@ -126,6 +126,18 @@ List<ModeData> paintModes(TextDelegate textDelegate) => [
       //     mode: PaintMode.none,
       //     label: textDelegate.noneZoom),
       ModeData(
+          icon: Icons.edit,
+          mode: PaintMode.freeStyle,
+          label: textDelegate.drawing),
+      ModeData(
+          icon: Icons.arrow_right_alt_outlined,
+          mode: PaintMode.arrow,
+          label: textDelegate.arrow),
+      ModeData(
+          icon: Icons.text_format,
+          mode: PaintMode.text,
+          label: textDelegate.text),
+      ModeData(
           icon: Icons.horizontal_rule,
           mode: PaintMode.line,
           label: textDelegate.line),
@@ -134,25 +146,13 @@ List<ModeData> paintModes(TextDelegate textDelegate) => [
           mode: PaintMode.rect,
           label: textDelegate.rectangle),
       ModeData(
-          icon: Icons.edit,
-          mode: PaintMode.freeStyle,
-          label: textDelegate.drawing),
-      ModeData(
           icon: Icons.lens_outlined,
           mode: PaintMode.circle,
           label: textDelegate.circle),
       ModeData(
-          icon: Icons.arrow_right_alt_outlined,
-          mode: PaintMode.arrow,
-          label: textDelegate.arrow),
-      ModeData(
           icon: Icons.power_input,
           mode: PaintMode.dashLine,
           label: textDelegate.dashLine),
-      ModeData(
-          icon: Icons.text_format,
-          mode: PaintMode.text,
-          label: textDelegate.text),
     ];
 
 @immutable
